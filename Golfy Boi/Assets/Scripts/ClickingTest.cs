@@ -17,6 +17,7 @@ public class ClickingTest : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log(hit.transform.position.y);
                 // the object identified by hit.transform was clicked
                 // do whatever you want
             }
