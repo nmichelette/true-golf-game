@@ -15,13 +15,15 @@ namespace UnityStandardAssets._2D
         private Vector3 m_LastTargetPosition;
         private Vector3 m_CurrentVelocity;
         private Vector3 m_LookAheadPos;
-
+        private Rigidbody2D[] players;
+        private int max;
         // Use this for initialization
         private void Start()
         {
             m_LastTargetPosition = target.position;
             m_OffsetZ = (transform.position - target.position).z;
             transform.parent = null;
+            players = FindObjectsOfType<Rigidbody2D>();
         }
 
 
@@ -29,6 +31,16 @@ namespace UnityStandardAssets._2D
         private void Update()
         {
             // only update lookahead pos if accelerating or changed direction
+            max = 0;
+            for(int i = 0; i<players.Length; i++)
+            {
+                if(players[i].position.x>players[max].position.x)
+                {
+                    max = i;
+                }
+            }
+            target = players[max].transform;
+
             float xMoveDelta = (target.position - m_LastTargetPosition).x;
 
             bool updateLookAheadTarget = Mathf.Abs(xMoveDelta) > lookAheadMoveThreshold;
