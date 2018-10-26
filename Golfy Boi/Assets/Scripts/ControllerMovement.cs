@@ -34,7 +34,7 @@ public class ControllerMovement : MonoBehaviour {
             {
                 power += 1;
             }
-            else
+            else if(power>0)
             {
                 power -= 1;
             }
