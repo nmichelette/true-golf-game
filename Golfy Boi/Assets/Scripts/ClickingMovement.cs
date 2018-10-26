@@ -23,6 +23,24 @@ public class ClickingMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            isDown = true;
+            coords = Input.mousePosition;
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            isDown = false;
+            coords2 = Input.mousePosition;
+
+
+            direction = new Vector2((coords2.x - coords.x) / Mathf.Sqrt(Mathf.Pow((coords2.x - coords.x), 2) + Mathf.Pow((coords2.y - coords.y), 2)), (coords2.y - coords.y) / Mathf.Sqrt(Mathf.Pow((coords2.x - coords.x), 2) + Mathf.Pow((coords2.y - coords.y), 2)));
+            GetComponent<Rigidbody2D>().AddForce(-direction * power * 100);
+            power = 0;
+            coords = new Vector2(0, 0);
+            coords2 = new Vector2(0, 0);
+        }
         if (Time.time >= nextTime)
         {
             if(isDown)
@@ -48,22 +66,22 @@ public class ClickingMovement : MonoBehaviour {
         }
     }
 
-    void OnMouseDown()
-    {
-        isDown = true;
-        coords = Input.mousePosition;
-    }
-    void OnMouseUp()
-    {
+    //void OnMouseDown()
+    //{
+    //    isDown = true;
+    //    coords = Input.mousePosition;
+    //}
+    //void OnMouseUp()
+    //{
         
-        isDown = false;
-        coords2 = Input.mousePosition;
+    //    isDown = false;
+    //    coords2 = Input.mousePosition;
 
 
-        direction = new Vector2((coords2.x - coords.x)/Mathf.Sqrt(Mathf.Pow((coords2.x - coords.x), 2) + Mathf.Pow((coords2.y - coords.y), 2)), (coords2.y - coords.y)/ Mathf.Sqrt(Mathf.Pow((coords2.x - coords.x), 2) + Mathf.Pow((coords2.y - coords.y), 2)));
-        GetComponent<Rigidbody2D>().AddForce(-direction*power*100);
-        power = 0;
-        coords = new Vector2(0, 0);
-        coords2 = new Vector2(0, 0);
-    }
+      //  direction = new Vector2((coords2.x - coords.x)/Mathf.Sqrt(Mathf.Pow((coords2.x - coords.x), 2) + Mathf.Pow((coords2.y - coords.y), 2)), (coords2.y - coords.y)/ Mathf.Sqrt(Mathf.Pow((coords2.x - coords.x), 2) + Mathf.Pow((coords2.y - coords.y), 2)));
+     //   GetComponent<Rigidbody2D>().AddForce(-direction*power*100);
+     //   power = 0;
+      //  coords = new Vector2(0, 0);
+     //   coords2 = new Vector2(0, 0);
+   // }
 }
