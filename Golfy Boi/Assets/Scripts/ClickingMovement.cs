@@ -8,11 +8,11 @@ public class ClickingMovement : MonoBehaviour {
     private float distance;
     private Vector2 direction;
     private Vector2 coords2;
-    private float interval = 0.2f;
+    public float interval = 0.2f;
     private float nextTime = 0;
     private float power = 0;
     private float maxDistance = 100.0f;
-    private float maxPower = 10.0f;
+    public float maxPower = 10.0f;
 
 
 

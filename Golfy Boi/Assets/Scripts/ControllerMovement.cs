@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ControllerMovement : MonoBehaviour {
     float h, v;
-    private float interval = 0.2f;
+    public float interval = 0.2f;
     private float nextTime = 0;
     private float power = 0;
-    private float maxPower = 10f;
+    public float maxPower = 10f;
     private Vector2 direction;
 
     public int playernum = 1;
