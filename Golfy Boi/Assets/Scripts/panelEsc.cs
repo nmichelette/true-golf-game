@@ -4,6 +4,8 @@ using UnityEngine;
 public class panelEsc : MonoBehaviour {
     public GameObject panel;
     bool isActive = false;
+
+    public AudioSource audi;
 	// Use this for initialization
 	void Start () {
         panel.gameObject.SetActive(false);
@@ -17,6 +19,7 @@ public class panelEsc : MonoBehaviour {
             panel.gameObject.SetActive(isActive);
             if (isActive)
             {
+                audi.Play();
                 Time.timeScale = 0;
             }
             else
