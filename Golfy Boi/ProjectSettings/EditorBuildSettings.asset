@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/testScene.unity
     guid: 95b3cf85ab6e08f4b90c8bcfd72912db
+  - enabled: 1
+    path: Assets/Scenes/PickChars.unity
+    guid: 6b237ee9c2c04dc4ba62e28254754c4c
   m_configObjects: {}
