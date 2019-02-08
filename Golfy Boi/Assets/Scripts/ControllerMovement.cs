@@ -4,44 +4,54 @@ using UnityEngine;
 
 public class ControllerMovement : MonoBehaviour {
     float h, v;
-    public float interval = 0.2f;
+    public float chargeRate = 3f;
     private float nextTime = 0;
     private float power = 0;
     public float maxPower = 10f;
+    public float dpadDeadZone = .3f;
     private Vector2 direction;
+    private LineRenderer lineRenderer;
 
     public int playernum = 1;
     // Use this for initialization
     void Start () {
-		
+        lineRenderer = GetComponentInChildren<LineRenderer>();
 	}
 
     // Update is called once per frame
     void Update()
     {
-        h = Input.GetAxis("Horizontal_P"+playernum);
-        v = Input.GetAxis("Vertical_P"+playernum);
-        Debug.Log("H" + playernum + ": " + h);
+        h = Input.GetAxisRaw("Horizontal_P"+playernum);
+        v = Input.GetAxisRaw("Vertical_P"+playernum);
+
+        if (Mathf.Abs(h) < dpadDeadZone && Mathf.Abs(v) < dpadDeadZone)
+        {
+            h = v = 0f;
+        }
+
+        var joystickVector = new Vector3(h, v, 0f).normalized * power;
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, transform.position + joystickVector);
+
+        Debug.DrawLine(new Vector3(0f, 0f, 0f), new Vector3(3f, 0f, 0f));
+
+        print("H" + playernum + ": " + h);
+        print("V" + playernum + ": " + v);
         if (Input.GetButtonDown("Fire1_P" + playernum))
         {
             direction = new Vector2(h, v);
             GetComponent<Rigidbody2D>().AddForce(-direction * power * 100);
             power = 0;
         }
-        if (Time.time >= nextTime)
+
+        if ((h != 0f || v != 0f))
         {
-            if ((h != 0 || v != 0)&&power<maxPower)
-            {
-                power += 1;
-            }
-            else if(power>0)
-            {
-                power -= 1;
-            }
-
-
-            nextTime += interval;
+            power += Time.deltaTime * chargeRate;
+            if (power > maxPower)
+                power = maxPower;
         }
-        
+        else
+            power = 0f;
+
     }
 }
