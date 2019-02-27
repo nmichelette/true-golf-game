@@ -18,13 +18,13 @@ public class PlayerDeath : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        players = GameObject.FindGameObjectsWithTag("Player");
         for (int i = 0; i < players.Length; i++)
         {
             if (players[i].gameObject.transform.position.y < -10)
             {
                 Debug.Log("cant see" + players[i]);
                 Destroy(players[i]);
-                script.updatePlayers();
             }
         }
     }
