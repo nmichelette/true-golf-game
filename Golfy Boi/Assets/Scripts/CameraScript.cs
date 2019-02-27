@@ -11,23 +11,39 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
         offset = new Vector3(0.0f, 0.0f, -10.0f);
-        players = GameObject.FindGameObjectsWithTag("Player");
         playerCount = players.Length;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (target)
+        if (target != null)
         {
-            transform.position = Vector3.Lerp(transform.position, target.transform.position+offset, 0.25f);
-        }
-        for (int i = 0; i < players.Length; i++)
-        {
-            if(players[i].gameObject.transform.position.x > target.transform.position.x)
+            transform.position = Vector3.Lerp(transform.position, target.transform.position + offset, 0.25f);
+            for (int i = 0; i < players.Length; i++)
             {
-                target = players[i];
+                if (players[i].gameObject.transform.position.x > target.transform.position.x)
+                {
+                    target = players[i];
+                }
             }
         }
+        else
+        {
+            Debug.Log("ungabunga");
+            for (int i = 0; i < players.Length; i++)
+            {
+                Debug.Log(players[i].ToString());
+                if (players[i].gameObject.transform.position.x > target.transform.position.x)
+                {
+                    target = players[i];
+                }
+            }
+        }
+    }
+
+    public void updatePlayers()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 }
