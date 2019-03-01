@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class startButton : MonoBehaviour {
 
+    public string sceneTo;
 	// Use this for initialization
 	void Start () {
      
@@ -16,8 +17,9 @@ public class startButton : MonoBehaviour {
 	}
     public void startGame()
     {
+        Debug.Log("start pressed");
         Time.timeScale = 1;
-        SceneManager.LoadScene("testScene");
+        SceneManager.LoadScene(sceneTo);
     }
 
     public void endGame()

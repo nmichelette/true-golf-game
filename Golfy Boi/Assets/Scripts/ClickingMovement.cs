@@ -12,7 +12,7 @@ public class ClickingMovement : MonoBehaviour {
     private float nextTime = 0;
     private float power = 0;
     private float maxDistance = 100.0f;
-    public float maxPower = 10.0f;
+    public float maxPower = 100.0f;
 
 
 
@@ -48,7 +48,7 @@ public class ClickingMovement : MonoBehaviour {
                 distance = Mathf.Sqrt(Mathf.Pow((Input.mousePosition.y - coords.y), 2) + Mathf.Pow((Input.mousePosition.x - coords.x), 2));
                 if (distance>maxDistance && power<maxPower)
                 {
-                    power += 1;
+                    power += 10;
                 }
                 else if(distance<maxDistance && distance/maxDistance<power/maxPower)
                 {
@@ -56,7 +56,7 @@ public class ClickingMovement : MonoBehaviour {
                 }
                 else if (distance < maxDistance && distance / maxDistance > power / maxPower)
                 {
-                    power += 1;
+                    power += 10;
                 }
             }
 
