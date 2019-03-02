@@ -35,30 +35,41 @@ public class PlayerDeath : MonoBehaviour {
         {
             Vector3 curr = players[i].gameObject.transform.position;
             Vector3 campos = cam.transform.position;
+
+            //Use to test if player is killed while in-bounds
+            //print("Player x:"+ curr.x + "  Player y:" + curr.y);
+            //print("Cam x:" + campos.x + "  Cam y:" + campos.y);
+            //print("Camera Height:"+ cam.orthographicSize);
+            //print("Camera Width:" + cam.orthographicSize * cam.aspect);
+
             switch (direction)
             {
                 case 1://right
-                    if ((curr.y < campos.y - cam.orthographicSize || curr.y < campos.y + cam.orthographicSize) || curr.x < campos.x - cam.orthographicSize * cam.aspect)
+                    if ((curr.y < campos.y - cam.orthographicSize || curr.y > campos.y + cam.orthographicSize) || curr.x < campos.x - cam.orthographicSize * cam.aspect)
                     {
                         Destroy(players[i]);
+                        print("Killed Player "+ (i + 1));
                     }
                     break;
                 case 2://left
                     if ((curr.y < campos.y - cam.orthographicSize || curr.y < campos.y + cam.orthographicSize) || curr.x > campos.x + cam.orthographicSize * cam.aspect)
                     {
                         Destroy(players[i]);
+                        print("Killed Player " + (i + 1));
                     }
                     break;
                 case 3: //up
                     if (curr.y < campos.y - cam.orthographicSize  || (curr.x < campos.x - cam.orthographicSize * cam.aspect || curr.x>campos.x +cam.orthographicSize*cam.aspect))
                     {
                         Destroy(players[i]);
+                        print("Killed Player " + (i + 1));
                     }
                     break;
                 case 4://down
                     if (curr.y > campos.y + cam.orthographicSize || (curr.x < campos.x - cam.orthographicSize * cam.aspect || curr.x > campos.x + cam.orthographicSize * cam.aspect))
                     {
                         Destroy(players[i]);
+                        print("Killed Player " + (i + 1));
                     }
                     break;
             }

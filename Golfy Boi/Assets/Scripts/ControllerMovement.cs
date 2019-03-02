@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ControllerMovement : MonoBehaviour {
     float h, v;
-    public float chargeRate = 3f;
+    public float chargeRate = 5f;
     private float nextTime = 0;
     private float power = 0;
     public float maxPower = 10f;
