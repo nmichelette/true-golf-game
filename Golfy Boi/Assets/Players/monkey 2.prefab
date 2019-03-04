@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1992080445517708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.935805, y: -1.9666672, z: 0}
+  m_LocalPosition: {x: -9.81, y: -1.95, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4882130809453118}
@@ -122,7 +122,7 @@ MonoBehaviour:
   chargeRate: 7
   maxPower: 10
   dpadDeadZone: 0.3
-  playernum: 2
+  playernum: 1
 --- !u!120 &120997272026122810
 LineRenderer:
   m_ObjectHideFlags: 1
