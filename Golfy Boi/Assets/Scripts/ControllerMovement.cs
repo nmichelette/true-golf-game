@@ -30,8 +30,8 @@ public class ControllerMovement : MonoBehaviour {
         }
 
         var joystickVector = new Vector3(h, v, 0f).normalized * power;
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, transform.position + joystickVector);
+        //lineRenderer.SetPosition(0, transform.position);
+        //lineRenderer.SetPosition(1, transform.position + joystickVector);
 
         Debug.DrawLine(new Vector3(0f, 0f, 0f), new Vector3(3f, 0f, 0f));
 

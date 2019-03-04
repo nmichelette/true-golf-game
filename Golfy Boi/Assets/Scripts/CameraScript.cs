@@ -30,6 +30,7 @@ public class CameraScript : MonoBehaviour
         playerCount = players.Length;
         death = GetComponent<PlayerDeath>();
         direction = 1;
+        target = players[0];
     }
 
     // Update is called once per frame
