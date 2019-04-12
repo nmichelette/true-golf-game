@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212139154808920224}
   - component: {fileID: 58808964278406248}
   - component: {fileID: 50962955847838404}
-  - component: {fileID: 114501672490567026}
+  - component: {fileID: 114291826695466278}
   m_Layer: 0
   m_Name: monkey 2
   m_TagString: Player
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1992080445517708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.81, y: -1.95, z: 0}
+  m_LocalPosition: {x: -9.81, y: 4.04, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4882130809453118}
@@ -108,7 +108,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.425
---- !u!114 &114501672490567026
+--- !u!114 &114291826695466278
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,10 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ac7b721e19ba04d887e7f55afeed26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeRate: 7
+  chargeRate: 5
   maxPower: 10
   dpadDeadZone: 0.3
-  playernum: 1
+  abilityCooldown: 2
+  ability: {fileID: 11400000, guid: 5c842c8fa904d6d46b8aef37a8782672, type: 2}
+  playernum: 4
 --- !u!120 &120997272026122810
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -250,7 +252,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e9d48701a861b04f92c9aa715be7a1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c93289ecd6c6f34ab0ec376c05179ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

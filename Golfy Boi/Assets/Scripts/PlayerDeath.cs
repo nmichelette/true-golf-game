@@ -34,7 +34,11 @@ public class PlayerDeath : MonoBehaviour {
         for (int i = 0; i < players.Length; i++)
         {
             Vector3 curr = players[i].gameObject.transform.position;
+            float[] playerTimer = new float[]{0f,0f,0f,0f};
+            bool[] trigger = new bool[] {true,true,true,true};
+            float DeathTimer = 2.0f;
             Vector3 campos = cam.transform.position;
+
 
             //Use to test if player is killed while in-bounds
             //print("Player x:"+ curr.x + "  Player y:" + curr.y);
@@ -47,8 +51,17 @@ public class PlayerDeath : MonoBehaviour {
                 case 1://right
                     if ((curr.y < campos.y - cam.orthographicSize || curr.y > campos.y + cam.orthographicSize) || curr.x < campos.x - cam.orthographicSize * cam.aspect)
                     {
-                        Destroy(players[i]);
-                        print("Killed Player "+ (i + 1));
+                        if (trigger[i])
+                        {
+                            playerTimer[i] = Time.time + DeathTimer;
+                            trigger[i] = false;
+                        }
+                        if(playerTimer[i]<=Time.time)
+                        {
+                            Destroy(players[i]);
+                            print("Killed Player " + (i + 1));
+                        }
+                        
                     }
                     break;
                 case 2://left
@@ -71,6 +84,9 @@ public class PlayerDeath : MonoBehaviour {
                         Destroy(players[i]);
                         print("Killed Player " + (i + 1));
                     }
+                    break;
+                default:
+                    trigger = new bool[] { true, true, true, true };
                     break;
             }
         }
